@@ -1,0 +1,200 @@
+
+    <form [formGroup]="userForm" (ngSubmit)="submit()" class="border rounded-3">
+        <div class="row g-0">
+            <div class="col text-center p-2 m-3 bg-light rounded-3">
+                <!-- <h1>Create User</h1> -->
+                <span class="fs-2"><b><i class="pi pi-user-plus" style="font-size: 2rem"></i>  Create User</b></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m-3">
+                <label>First Name</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="fname"
+                    placeholder="Enter First Name"
+                    formControlName="firstname"
+                >
+                <div class="form-text text-danger" *ngIf="fname.errors?.['required'] && (fname.touched || fname.dirty)">
+                    First Name is Required
+                </div>
+                <div class="form-text text-danger" *ngIf="fname.errors?.['pattern'] && (fname.touched || fname.dirty)">
+                    First character must be an alphabet
+                </div>
+                <div class="form-text text-danger" *ngIf="fname.errors?.['minlength'] && (fname.touched || fname.dirty)">
+                    Name too short
+                </div>
+                <div class="form-text text-danger" *ngIf="fname.errors?.['maxlength'] && (fname.touched || fname.dirty)">
+                    Name too large
+                </div>
+            </div>
+    
+            <div class="col m-3">
+                <label>Last Name</label>
+                <input
+                    class="form-control"
+                    type="text"
+                    id="lname"
+                    placeholder="Enter Last Name"
+                    formControlName="lastname"
+                >
+                <div class="form-text text-danger" *ngIf="lname.errors?.['required'] && (lname.touched || lname.dirty)">
+                    Last Name is Required
+                </div>
+                <div class="form-text text-danger" *ngIf="lname.errors?.['pattern']">
+                    First character must be an alphabet
+                </div>
+                <div class="form-text text-danger" *ngIf="lname.errors?.['minlength']">
+                    Name too short
+                </div>
+                <div class="form-text text-danger" *ngIf="lname.errors?.['maxlength']">
+                    Name too large
+                </div>
+    
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m-3">
+                <label>Email</label>
+                <input
+                    type="text"
+                    placeholder="Enter Email Address"
+                    id="email_id"
+                    class="form-control"
+                    formControlName="email"
+                >
+                <div class="form-text text-danger" *ngIf="Email.errors?.['required'] && (Email.touched || Email.dirty)">
+                    Email is Required
+                </div>
+                <div class="form-text text-danger" *ngIf="Email.errors?.['email'] && Email.touched">
+                    Invalid Email Address
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col m-3">
+                <label>Phone Number</label>
+                <input
+                    type="text"
+                    placeholder="Enter Mobile Number"
+                    id="phone"
+                    class="form-control"
+                    formControlName="mobile"
+                >
+                <div class="form-text text-danger" *ngIf="mob.errors?.['required'] && (mob.touched || mob.dirty)">
+                    Phone Number is Required
+                </div>
+                <div class="form-text text-danger" *ngIf="mob.errors?.['pattern']">
+                    Invalid Phone Number
+                </div>
+                <div class="form-text text-danger" *ngIf="mob.errors?.['minlength']">
+                    Phone Number too short
+                </div>
+                <div class="form-text text-danger" *ngIf="mob.errors?.['maxlength']">
+                    Phone Number too large
+                </div>
+            </div>
+            <div class="col m-3">
+                <label class="m-1">Sex</label>
+                <div class="row">
+                    <div class="col">
+                        <input
+                            type="radio"
+                            id="male"
+                            value="m"
+                            class="form-check-input"
+                            formControlName="sex"
+                        >
+                        <label>Male</label>
+                    </div>
+    
+                    <div class="col">
+                        <input
+                            type="radio"
+                            id="female"
+                            value="f"
+                            class="form-check-input"
+                            formControlName="sex"
+                        >
+                        <label>Female</label>
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Sex.errors?.['required']">
+                        Select Gender
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    
+        <div class="row">
+            <div class="col m-3">
+                <label>City</label>
+                <input
+                    type="text"
+                    placeholder="Enter City Name"
+                    id="city"
+                    class="form-control"
+                    formControlName="city"
+                >
+            </div>
+    
+            <div class="col m-3">
+                <label>Date of Birth</label>
+                <input
+                    type="date"
+                    placeholder="Date/Month/Year"
+                    id="dob"
+                    class="form-control"
+                    formControlName="dob"
+                >
+                <!-- <div class="form-text text-danger" *ngIf="dob.errors?.['required'] || dob.dirty">
+                    Date of Birth is Required
+                </div> -->
+                <div class="form-text text-danger" *ngIf="dob.errors?.['required'] && dob.touched">
+                    Date of Birth is invalid
+                </div>
+            </div>
+    
+        </div>
+        <div class="row">
+            <div class="col m-3">
+                 <!-- -->
+                <!-- <button 
+                [disabled]="userForm.invalid"
+                icon="pi pi-users"
+                type="submit" 
+                class="form-control" 
+                style="width: 200px; margin: auto; background: #52d2f1;" 
+                id="create_new">Submit</button> -->
+
+                <button pButton 
+                    [disabled]="userForm.invalid"
+                    id="create_new"
+                    class="form-control"
+                    icon="pi pi-user"
+                    iconPos="right"
+                    type="submit" 
+                    label="Submit" 
+                    style=" width: 203px; margin: auto; background: #52d2f1;" >
+                </button>
+            </div>
+    
+            <div class="col m-3">
+                <button pButton 
+                class="form-control" 
+                icon="pi pi-users"
+                iconPos="right"
+                style="width: 203px; margin: auto; background: #565f61; color:azure" 
+                label="Cancel"
+                routerLink="/"></button>
+            </div>
+    
+        </div>
+    
+    </form>
+    
+    <!-- <pre>
+        {{users|json}}
+    </pre> -->
+    
